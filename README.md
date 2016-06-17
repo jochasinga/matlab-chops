@@ -2,6 +2,11 @@ matlab-chops
 ============
 Quick MATLAB intro and examples for [Aerial Robotics Course on Coursera](https://www.coursera.org/learn/robotics-flight).
 
+Contributions
+-------------
+Please, fork away and send pull requests. Help add more lessons, code samples, tips and tricks
+to help fellow students.
+
 Jump To
 -------
 + [Basics](#variables)
