@@ -1,14 +1,21 @@
-matlab-intro
+matlab-chops
 ============
-Quick MATLAB intro for [Aerial Robotics Course on Coursera](https://www.coursera.org/learn/robotics-flight).
+Quick MATLAB intro and examples for [Aerial Robotics Course on Coursera](https://www.coursera.org/learn/robotics-flight).
 
 Jump To
 -------
-+ [Variables](#variables)
-+ [Vectors](#creating-vectors)
-+ [Functions](#functions)
-+ [Vector Calculations](#vector-calculations)
-+ [Matrices](#creating-matrices)
++ [Basics](#variables)
+    - [Variables](#variables)
+    - [Vectors](#creating-vectors) 
+	- [Functions](#functions)
+    - [Vector calculations](#vector-calculations)
+    - [Matrices](#creating-matrices)
+    - [Matrix multiplication](#matrix-multiplication)
++ [Programming](#logical-operators)
+    - [Logical Operators](#logical-operators)
+	- [Conditional data selection](#conditional-data-selection)
+	- [FOR loop](#for-loop)
+	- [IF-ELSE Statement](#if-else-statement)
 
 Variables
 ---------
@@ -213,6 +220,87 @@ B = [-1, 0; 2, 3; -2, 1; 0, -1]
 C = A * B
 
 ```
+
+Logical Operators
+-----------------
+A Boolean in MATLAB boil down to 0 and 1.
+
+```matlab
+
+$ 1
+3 == 3 
+
+$ 0
+3 > 10
+
+$ 1
+10 >= 8
+
+$ 1
+10 > 3 & 5 == 5
+
+$ 0
+2 & 0
+
+$ 1
+0 | 1
+
+```
+
+Conditional Data Selection
+--------------------------
+When you have a vector or a matrix, you can compare it against a scalar value 
+using a logical operator (`<`, `>`, `==`, and etc.) to create a **logical array**
+that can be used as a data filter.
+
+```matlab
+
+$ I -> [ 0  0  1  1 ]
+I = [1, 2, 3, 10] > 2
+
+$ I -> [
+$   0  1  1
+$   0  0  1
+$ ]
+I = [1.0, 10.5, 8.01; 0.4, 0.08, 7.23] > 7
+
+$ We can now use logical array I to extract data resulting in an array
+$ containing only the data that satisfies the criteria.
+v = [10, 22, 31, 0]
+I = v < 30
+result = v(I)
+
+$ result -> [ 10  22  0 ]
+
+```
+
+For-loop
+--------
+FOR loop is used for repetitive code. `for` is always terminated by `end`.
+
+```matlab
+y = [];
+for n = 1:10
+	y(n) = n;
+end
+
+```
+
+If-else statement
+-----------------
+`if` and `else` and be used for conditionals.
+
+```matlab
+
+function result = myfunc(x)
+if x > 0 && x < 10
+	result = 3; 
+else
+	result = 10;
+end
+
+```
+
 
 
 
