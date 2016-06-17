@@ -21,6 +21,9 @@ Jump To
 	- [Conditional data selection](#conditional-data-selection)
 	- [FOR loop](#for-loop)
 	- [IF-ELSE Statement](#if-else-statement)
++ [Advanced Tools](#multiple-plots)
+    - [Multiple Plots](#multiple-plots)
+	- [Annotating Graphs](#annotating-graphs)
 
 Variables
 ---------
@@ -305,6 +308,54 @@ else
 end
 
 ```
+
+Multiple plots
+--------------
+Plotting multiple data on the same graph.
+
+```matlab
+
+month = 1:12
+avgTempLondon = [
+	5.24, 5.20, 6.92, 9.31, 12.26, 14.80, 16.51, 16.93, 14.91, 12.27, 8.73, 5.91
+]
+avgTempRio = [
+	25.73, 25.98, 25.68, 24.56, 22.59, 21.71, 21.41, 21.69, 22.35, 23.27, 23.77, 25.05
+]
+
+$ This plot only the temperature-month in London
+$ The third input specify the style of the plot ('red dot')
+plot(month, avgTempLondon, 'r:o')
+
+$ This command says that we're adding more plot.
+hold on 
+
+$ This plot the temperatures in Rio
+plot(month, avgTempRio, 'b-*')
+
+```
+You can try using `bar(month, avgTempLondon, 'yellow')` to create a bar chart.
+
+Annotating Graphs
+-----------------
+You can add labels to a graph to make it more readable.
+
+```label
+
+x = -1:0.1:1;
+y = x.^2;
+
+$ Plot a hyperbolic graph
+plot(x, y)
+xlabel('time [s]')
+ylabel('amplitude')
+title('my plot')
+legent('y(t)')
+
+```
+
+
+
 
 
 
