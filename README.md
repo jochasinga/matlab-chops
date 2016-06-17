@@ -5,8 +5,10 @@ Quick MATLAB intro for [Aerial Robotics Course on Coursera](https://www.coursera
 Jump To
 -------
 + [Variables](#variables)
-+ [Creating Vectors](#creating-vectors)
++ [Vectors](#creating-vectors)
 + [Functions](#functions)
++ [Vector Calculations](#vector-calculations)
++ [Matrices](#creating-matrices)
 
 Variables
 ---------
@@ -73,7 +75,7 @@ Functions
 A function can have zero or more inputs and outputs:
 
 ```matlab
-
+x = sqrt(4)
 y = sin(10)
 z = cos(3)
 
@@ -115,6 +117,108 @@ sum = num1 + num2
 
 ```
 This time `add_one` calls `add_pair` in its file.
+
+Vector Calculations
+-------------------
+Often than not, in MATLAB, calculations are done on vectors and matrices.
+For instance, multiplying a scalar value to every element in a vector or
+substituting a variable in an equation with every element in a vector.
+
+```matlab
+
+% Provided this vector.
+x = -2:0.1:2;
+
+% Create a y vector to pair with x for graph plotting
+y = 3*x.^2 + 2*x - 6;
+
+```
+The `.^` is called an **elementwise POWER**. In MATLAB, `*`, `/`, and `^` are
+designed to used with matrices (hence MATrixLab).
+
+Use **elementwise operators** like `.^`, `.*`, and `./` to make calculation 
+between a scalar and each element of a vector in this case.
+
+```matlab
+
+% This raise every element to the power of 2.
+([1, 0, 5, 3]).^2
+
+```
+
+However, if you try `/` and `*` in the above expression it will work since
+MATLAB is more forgiving at that.
+
+Creating Matrices
+-----------------
+A matrix is a multidimensional vectors. Creating a matrix borrows syntax from creating row and column vectors.
+
+```matlab
+
+% This create a 3 x 3 matrix
+% M = [
+%    1  2  3
+%    4  5  6
+%    7  8  9
+% ]
+M = [1, 2, 3; 4, 5, 6; 7, 8, 9]
+
+
+```
+
+Use `,` to seperate siblings on a row, and `;` to terminate a row and start another one. 
+
+Matrix Multiplication
+---------------------
+A solid rule to multiply matrix A and B together is    
+
+> Number of column of matrix A must be equal to number of row in matrix B.    
+
+This is what happens:
+
+1. Each element on every n row of matrix A will be multiplied to the corresponding
+element of the corresponding n column of matrix B.
+2. Each pair's product will be summed to a value
+3. That value will become an n x n element of the new matrix.
+
+```matlab
+
+% 3 x 4 matrix
+%
+% [
+%    4  2  0 -1
+%    3  1 -4  0
+%   -1  0  3  6
+% ]
+%
+A = [4, 2, 0, -1; 3, 1, -4, 0; -1, 0, 3, 6]
+
+% 4 x 2 matrix
+%
+% [
+%   -1  0
+%    2  3
+%   -2  1
+%    0 -1
+% ]
+B = [-1, 0; 2, 3; -2, 1; 0, -1]
+
+% Get a 3 x 2 matrix
+%
+% [
+%   0  7
+%   7 -1
+%  -5 -3
+% ]
+C = A * B
+
+```
+
+
+
+
+
+
 
 
 
