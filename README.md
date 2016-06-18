@@ -24,6 +24,7 @@ Jump To
 + [Advanced Tools](#multiple-plots)
     - [Multiple Plots](#multiple-plots)
 	- [Annotating Graphs](#annotating-graphs)
+	- [Solving Linear Equations](#solving-linear-equations)
 
 Variables
 ---------
@@ -353,6 +354,78 @@ title('my plot')
 legent('y(t)')
 
 ```
+
+Solving Linear Equations
+------------------------
+Making linear equations into matrices solvable in MATLAB.
+
+Given the following equations:
+
+1.5_x_<sub>1</sub> + _x_<sub>2</sub> = 3
+_x_<sub>3</sub> = 4_x_<sub>2</sub>
+4 - _x_<sub>1</sub> + _x_<sub>2</sub> = _x_<sub>3</sub>
+
+Do the following:
+
+1. Switch the constants to the right hand side of the equal signs
+2. Move the unknown variables to the left 
+3. Make sure the variables appear in the same order as the original.
+4. Add one or more variables that are not present in any equations and
+use 0 as the coefficient.
+5. Add 1 as the coefficient of any single variable.
+
+1.5_x_<sub>1</sub> + 1_x_<sub>2</sub> + 0_x_<sub>3</sub> = **3**
+0_x_<sub>1</sub> + -4_x_<sub>2</sub> + 1_x_<sub>3</sub> = **0**
+-1_x_<sub>1</sub> + 1_x_<sub>2</sub> + 1_x_<sub>3</sub> = **-4**
+
+6. Form a column vector from the constants on the right.
+
+```matlab
+
+b = [3; 0; -4];
+
+```
+
+7. Form a matrix from the coefficients on the left..
+
+```matlab
+
+A = [1.5, 1, 0; 0, -4, 1; -1, 1, -1];
+
+```
+
+8. Form an **imaginery** column vector [_x_<sub>1</sub>, _x_<sub>2</sub>, _x_<sub>3</sub>]. At this point
+try to imagine the equations in this way:
+
+| 1.5  1  0 |  |_x_<sub>1</sub>|  | 3 |
+|   0 -4  1 |  |_x_<sub>2</sub>|  | 0 |
+|  -1  1 -1 |  |_x_<sub>3</sub>|  |-4 |
+
+If this was a scalar equation `a*x = b`, all we have to do is divide both side by `a` to get `x = b/a`. However, matrix division is very complex and we can use a `\` (left division operator) to do a matrix division:
+
+```matlab
+
+x = A\b;
+
+$ x =
+$     1.4286
+$     0.8571
+$     3.4286
+$
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
