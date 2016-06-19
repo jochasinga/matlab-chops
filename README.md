@@ -236,22 +236,22 @@ A Boolean in MATLAB boil down to 0 and 1.
 
 ```matlab
 
-$ 1
+% 1
 3 == 3 
 
-$ 0
+% 0
 3 > 10
 
-$ 1
+% 1
 10 >= 8
 
-$ 1
+% 1
 10 > 3 & 5 == 5
 
-$ 0
+% 0
 2 & 0
 
-$ 1
+% 1
 0 | 1
 
 ```
@@ -264,22 +264,22 @@ that can be used as a data filter.
 
 ```matlab
 
-$ I -> [ 0  0  1  1 ]
+% I -> [ 0  0  1  1 ]
 I = [1, 2, 3, 10] > 2
 
-$ I -> [
-$   0  1  1
-$   0  0  1
-$ ]
+% I -> [
+%   0  1  1
+%   0  0  1
+% ]
 I = [1.0, 10.5, 8.01; 0.4, 0.08, 7.23] > 7
 
-$ We can now use logical array I to extract data resulting in an array
-$ containing only the data that satisfies the criteria.
+% We can now use logical array I to extract data resulting in an array
+% containing only the data that satisfies the criteria.
 v = [10, 22, 31, 0]
 I = v < 30
 result = v(I)
 
-$ result -> [ 10  22  0 ]
+% result -> [ 10  22  0 ]
 
 ```
 
@@ -288,7 +288,9 @@ For-loop
 FOR loop is used for repetitive code. `for` is always terminated by `end`.
 
 ```matlab
+
 y = [];
+
 for n = 1:10
 	y(n) = n;
 end
@@ -316,22 +318,22 @@ Plotting multiple data on the same graph.
 
 ```matlab
 
-month = 1:12
+month = 1:12;
 avgTempLondon = [
 	5.24, 5.20, 6.92, 9.31, 12.26, 14.80, 16.51, 16.93, 14.91, 12.27, 8.73, 5.91
-]
+];
 avgTempRio = [
 	25.73, 25.98, 25.68, 24.56, 22.59, 21.71, 21.41, 21.69, 22.35, 23.27, 23.77, 25.05
-]
+];
 
-$ This plot only the temperature-month in London
-$ The third input specify the style of the plot ('red dot')
+% This plot only the temperature-month in London
+% The third input specify the style of the plot ('red dot')
 plot(month, avgTempLondon, 'r:o')
 
-$ This command says that we're adding more plot.
+% This command says that we're adding more plot.
 hold on 
 
-$ This plot the temperatures in Rio
+% This plot the temperatures in Rio
 plot(month, avgTempRio, 'b-*')
 
 ```
@@ -346,12 +348,14 @@ You can add labels to a graph to make it more readable.
 x = -1:0.1:1;
 y = x.^2;
 
-$ Plot a hyperbolic graph
+% Plot a hyperbolic graph
 plot(x, y)
+
+% Add labels, title and legend
 xlabel('time [s]')
 ylabel('amplitude')
 title('my plot')
-legent('y(t)')
+legend('y(t)')
 
 ```
 
@@ -361,9 +365,9 @@ Making linear equations into matrices solvable in MATLAB.
 
 Given the following equations:
 
-1.5_x_<sub>1</sub> + _x_<sub>2</sub> = 3
-_x_<sub>3</sub> = 4_x_<sub>2</sub>
-4 - _x_<sub>1</sub> + _x_<sub>2</sub> = _x_<sub>3</sub>
+1.5*x*<sub>1</sub> + *x*<sub>2</sub> = 3
+*x*<sub>3</sub> = 4*x*<sub>2</sub>
+4 - *x*<sub>1</sub> + *x*<sub>2</sub> = *x*<sub>3</sub>
 
 Do the following:
 
@@ -374,9 +378,9 @@ Do the following:
 use 0 as the coefficient.
 5. Add 1 as the coefficient of any single variable.
 
-1.5_x_<sub>1</sub> + 1_x_<sub>2</sub> + 0_x_<sub>3</sub> = **3**
-0_x_<sub>1</sub> + -4_x_<sub>2</sub> + 1_x_<sub>3</sub> = **0**
--1_x_<sub>1</sub> + 1_x_<sub>2</sub> + 1_x_<sub>3</sub> = **-4**
+1.5*x*<sub>1</sub> + 1*x*<sub>2</sub> + 0*x*<sub>3</sub> =  3
+ 0*x*<sub>1</sub> + -4*x*<sub>2</sub> + 1*x*<sub>3</sub> =  0
+ -1*x*<sub>1</sub> + 1*x*<sub>2</sub> + 1*x*<sub>3</sub> = -4
 
 6. Form a column vector from the constants on the right.
 
@@ -394,7 +398,7 @@ A = [1.5, 1, 0; 0, -4, 1; -1, 1, -1];
 
 ```
 
-8. Form an **imaginery** column vector [_x_<sub>1</sub>, _x_<sub>2</sub>, _x_<sub>3</sub>]. At this point
+8. Form an **imaginery** column vector `[*x*<sub>1</sub>; *x*<sub>2</sub>; *x*<sub>3</sub>]`. At this point
 try to imagine the equations in this way:
 
 | 1.5  1  0 |  |_x_<sub>1</sub>|  | 3 |
@@ -407,13 +411,15 @@ If this was a scalar equation `a*x = b`, all we have to do is divide both side b
 
 x = A\b;
 
-$ x =
-$     1.4286
-$     0.8571
-$     3.4286
-$
+% x =
+%     1.4286
+%     0.8571
+%     3.4286
+%
 
 ```
+
+
 
 
 
