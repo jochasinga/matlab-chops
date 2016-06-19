@@ -365,7 +365,7 @@ Making linear equations into matrices solvable in MATLAB.
 
 Given the following equations:
 
-```
+```markdown
 
 1.5*x*<sub>1</sub> + *x*<sub>2</sub> = 3
 *x*<sub>3</sub> = 4*x*<sub>2</sub>
@@ -382,7 +382,7 @@ Given the following equations:
 use 0 as the coefficient.
 5. Add 1 as the coefficient of any single variable.
 
-```
+```markdown
 
 1.5*x*<sub>1</sub> + 1*x*<sub>2</sub> + 0*x*<sub>3</sub> =  3
  0*x*<sub>1</sub> + -4*x*<sub>2</sub> + 1*x*<sub>3</sub> =  0
@@ -406,16 +406,20 @@ A = [1.5, 1, 0; 0, -4, 1; -1, 1, -1];
 
 ```
 
-8. Form an **imaginery** column vector `[*x*<sub>1</sub>; *x*<sub>2</sub>; *x*<sub>3</sub>]`. At this point
-try to imagine the equations in this way:
+8. Form an **imaginery** column vector 
+
+```markdown
+
+[*x*<sub>1</sub>; *x*<sub>2</sub>; *x*<sub>3</sub>]`
 
 ```
+At this point try to imagine the equations in this way:
 
-| 1.5  1  0 |  | *x*<sub>1</sub> |  | 3 |
-|   0 -4  1 |  | *x*<sub>2</sub> |  | 0 |
-|  -1  1 -1 |  | *x*<sub>3</sub> |  |-4 |
-
-```
+|     *A*    |         *x*       | *b* |
+|:----------:|:-----------------:|:---:|
+| 1.5  1  0  |  *x*<sub>1</sub>  |  3  |
+|   0 -4  1  |  *x*<sub>2</sub>  |  0  |
+|  -1  1 -1  |  *x*<sub>3</sub>  | -4  |
 
 If this was a scalar equation `a*x = b`, all we have to do is divide both side by `a` to get `x = b/a`. However, matrix division is very complex and we can use a `\` (left division operator) to do a matrix division:
 
