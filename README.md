@@ -25,6 +25,8 @@ Jump To
     - [Multiple Plots](#multiple-plots)
 	- [Annotating Graphs](#annotating-graphs)
 	- [Solving Linear Equations](#solving-linear-equations)
+	- [Symbolic Calculations](#symbolic-calculations)
+	- [Function Handles](#function=handles)
 
 Variables
 ---------
@@ -365,13 +367,9 @@ Making linear equations into matrices solvable in MATLAB.
 
 Given the following equations:
 
-```markdown
-
-1.5*x*<sub>1</sub> + *x*<sub>2</sub> = 3
-*x*<sub>3</sub> = 4*x*<sub>2</sub>
-4 - *x*<sub>1</sub> + *x*<sub>2</sub> = *x*<sub>3</sub>
-
-```
+> 1.5*x*<sub>1</sub> + *x*<sub>2</sub> = 3
+> *x*<sub>3</sub> = 4*x*<sub>2</sub>
+> 4 - *x*<sub>1</sub> + *x*<sub>2</sub> = *x*<sub>3</sub>    
 
 #### Do the following:
 
@@ -382,13 +380,9 @@ Given the following equations:
 use 0 as the coefficient.
 5. Add 1 as the coefficient of any single variable.
 
-```markdown
-
-1.5*x*<sub>1</sub> + 1*x*<sub>2</sub> + 0*x*<sub>3</sub> =  3
- 0*x*<sub>1</sub> + -4*x*<sub>2</sub> + 1*x*<sub>3</sub> =  0
- -1*x*<sub>1</sub> + 1*x*<sub>2</sub> + 1*x*<sub>3</sub> = -4
- 
-```
+> 1.5*x*<sub>1</sub> + 1*x*<sub>2</sub> + 0*x*<sub>3</sub> =  3
+>  0*x*<sub>1</sub> + -4*x*<sub>2</sub> + 1*x*<sub>3</sub> =  0
+>  -1*x*<sub>1</sub> + 1*x*<sub>2</sub> + 1*x*<sub>3</sub> = -4    
 
 6. Form a column vector from the constants on the right.
 
@@ -406,22 +400,7 @@ A = [1.5, 1, 0; 0, -4, 1; -1, 1, -1];
 
 ```
 
-8. Form an **imaginery** column vector 
-
-```markdown
-
-[*x*<sub>1</sub>; *x*<sub>2</sub>; *x*<sub>3</sub>]`
-
-```
-At this point try to imagine the equations in this way:
-
-|     *A*    |         *x*       | *b* |
-|:----------:|:-----------------:|:---:|
-| 1.5  1  0  |  *x*<sub>1</sub>  |  3  |
-|   0 -4  1  |  *x*<sub>2</sub>  |  0  |
-|  -1  1 -1  |  *x*<sub>3</sub>  | -4  |
-
-If this was a scalar equation `a*x = b`, all we have to do is divide both side by `a` to get `x = b/a`. However, matrix division is very complex and we can use a `\` (left division operator) to do a matrix division:
+If this was a scalar equation `a*x = b`, all we have to do is divide both side by `a` to get `x = b/a`. However, matrix division is very complex and we can use a `\` (left division operator) to do a matrix division.
 
 ```matlab
 
@@ -434,6 +413,101 @@ x = A\b;
 %
 
 ```
+
+Symbolic Calculations
+---------------------
+Sometime it's ideal not to assign a value to a variable, i.e. when
+dealing with imaginary numbers. MATLAB has a `syms` variable type.
+
+We can calculate the root of a quadratic equation easily when we 
+know all the coefficients.
+
+*y* = *ax*<sup>2</sup> + *bx* + *c* = 0
+
+```matlab
+
+roots([3, 2, -6])
+
+% ans = 
+      -1.7963
+	   1.1196
+
+```
+
+But sometimes you get imaginery numbers.
+
+```matlab
+
+roots([1, 2, 2])
+
+ans = 
+    -1.0000 + 1.0000i
+    -1.0000 - 1.0000i
+
+```
+
+This is how you create symbolic variables. Hence, we're instantiating
+them without the need to assign numerical values to them.
+
+```matlab
+
+% Instantiating symbols
+syms a b c x
+
+% Assign to an equation
+y = a*x^2 + b*x + c;
+
+```
+
+*y* has the the `syms` type too.
+
+Function Handles
+----------------
+Many functions receive another function as an input. For instance:
+
+```matlab
+
+fminsearch(fun, x0)
+
+```
+
+Which finds the minimum value of the *f*(*x*) provided.
+
+This can be done by creating a function handle, which is a variable
+that holds a reference to a function.
+
+```matlab
+
+fHandle = @(arg1, ...) FunctionDefinition
+
+```
+
+The `@` is used to create an anonymous function, provided the definition
+fits on a single line.
+
+```matlab
+
+handle1 = @(x) x.^2
+handle2 = @(t, y) sin(t) + y
+handle3 = @(z) myFunction(z)
+
+```
+
+Back to `fminsearch` function, let's say we want to find the minimum
+value of `cos(x)`, we use a handle like this:
+
+```matlab
+
+fHandle = @(x) cos(x);
+res = fminsearch(fHandle, 3)
+
+```
+
+
+
+
+
+
 
 
 
